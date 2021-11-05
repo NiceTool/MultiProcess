@@ -1,21 +1,20 @@
 package com.hhhaiai.mpdemo;
 
 import me.hhhaiai.ImpTask;
-import me.hhhaiai.mptils.EContext;
-import me.hhhaiai.mptils.MPSupport1;
 import me.hhhaiai.mptils.MpLog;
+import me.hhhaiai.mptils.ProcessUtils;
 
 public class ChinaPrint implements ImpTask {
     @Override
     public String getName() {
-        return "[" + MPSupport1.getCurrentProcessName(EContext.getContext()) + "] I'm Chinese!";
+        return "[" + ProcessUtils.getCurrentProcessName() + "] I'm Chinese!";
     }
 
     @Override
     public void work() {
         MpLog.d(
                 "ChinaPrint. work ------------["
-                        + MPSupport1.getCurrentProcessName(EContext.getContext())
+                        + ProcessUtils.getCurrentProcessName()
                         + "]------print msg");
     }
 }
