@@ -1,0 +1,33 @@
+apply plugin: 'maven'
+
+def maven_version = "1.0.0"
+def maven_groupId = 'com.nicetool'
+
+//下面的version和group必须有，gradle打包的pom文件依赖这个版本号和group
+version = maven_version
+group = maven_groupId
+
+def maven_artifactId
+if (project.name == "MultiprocessLib") {
+    maven_artifactId = "MultiProcessTest"
+} else {
+    maven_artifactId = project.name
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            repository(url: uri('E:\\git_maven'))
+
+            pom.project {
+                name maven_artifactId
+                groupId maven_groupId
+                artifactId maven_artifactId
+                version maven_version
+                packaging 'aar'
+            }
+        }
+    }
+}
+
